@@ -1,10 +1,12 @@
 <div class="container center">
-    <h1 class="script">Browse</h1>
+    <h1 class="script pamber larger">Browse</h1>
+    <img src="/assets/images/divider.svg"/>
     <div class="left">
         <ol>
-            <li *ngFor="let recipe of recipes()" style="padding: 20px;" role="listitem" itemtype="listitem">
+            <li *ngFor="let recipe of recipes()" style="padding-top: 30px;" role="listitem">
                 <a href="/recipes/{{recipe.id}}">{{ recipe.name }}</a>
             </li>
         </ol>
     </div>
+    <img src="/assets/images/divider.svg"/>
 </div>

@@ -23,3 +23,22 @@ li a {
     text-decoration: none;
     outline: none;
 }
+
+.pamber {
+    color: #ffc107;
+    text-shadow:
+        -1px -1px 0 #673ab7,
+        1px -1px 0 #673ab7,
+        -1px 1px 0 #673ab7,
+        1px 1px 0 #673ab7;
+}
+
+.larger {
+    font-size: 45px;
+    font-weight: 900;
+}
+
+img {
+    width: 100%;
+    padding: 0;
+}
