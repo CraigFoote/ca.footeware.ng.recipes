@@ -1,14 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
 
+@font-face {
+    font-family: "coneria";
+    src: url(/assets/fonts/ConeriaScript.ttf) format("truetype");
+}
+
 html,
 body {
     height: 100%;
+    margin: 0;
+    font-size: 24px;
 }
 
-body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-    font-size: 24px;
+.script {
+    font-family: "coneria";
+    font-size: 32px;
+}
+
+.center {
+    text-align: center;
+}
+
+.left {
+    text-align: left;
 }
 
 .container {
@@ -18,7 +32,6 @@ body {
     margin-right: auto;
 }
 
-.center {
-    text-align: center;
+img.border {
+    border: 5px solid #673ab7 !important;
 }
-

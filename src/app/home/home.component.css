@@ -1,3 +1,9 @@
-img.border {
-    border: 5px solid #673ab7 !important;
+@font-face {
+    font-family: "decker";
+    src: url(/assets/fonts/Decker.ttf) format("truetype");
+}
+
+.decker {
+    font-family: "decker";
+    font-size: 28px;
 }

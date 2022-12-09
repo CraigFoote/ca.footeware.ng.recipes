@@ -1,15 +1,5 @@
-@font-face {
-    font-family: "coneria";
-    src: url(/assets/fonts/ConeriaScript.ttf) format("truetype");
-}
-
-body {
-    font-size: 24px;
-    font-family: 'decker';
-}
-
 .nav-link-container {
-    padding: 80px 10px 10px 10px;
+    padding: 70px 10px 10px 10px;
 }
 
 .nav-link-container li {
@@ -19,9 +9,19 @@ body {
 
 .nav-link-container li a {
     text-decoration: none;
+    font-family: "decker";
     outline: none;
     display: block;
     padding: 20px;
+    color: #FFC107;
+}
+
+.nav-link-container li a:hover {
+    color: #fceab6;
+}
+
+.nav-link-container li a:active {
+    color: #7E57C2;
 }
 
 mat-sidenav-container {
@@ -34,32 +34,9 @@ mat-sidenav-container {
     font-size: 28px;
 }
 
-.script {
-    font-family: "coneria";
-    font-size: 32px;
-}
-
-.decker {
-    font-family: "decker";
-}
-
-.center {
-    text-align: center;
-}
-
-.left {
-    text-align: left;
-}
-
 mat-sidenav-content,
 mat-sidenav {
     background-color: aliceblue;
-}
-
-mat-list-item a {
-    font-family: "decker";
-    font-size: 24px;
-    text-decoration: none;
 }
 
 .full-width {
@@ -71,8 +48,4 @@ mat-list-item a {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
-}
-
-img.border {
-    border: 5px solid #673ab7 !important;
 }
