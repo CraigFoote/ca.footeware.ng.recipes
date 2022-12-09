@@ -1,0 +1,78 @@
+@font-face {
+    font-family: "coneria";
+    src: url(/assets/fonts/ConeriaScript.ttf) format("truetype");
+}
+
+body {
+    font-size: 24px;
+    font-family: 'decker';
+}
+
+.nav-link-container {
+    padding: 80px 10px 10px 10px;
+}
+
+.nav-link-container li {
+    list-style: none;
+    text-align: center;
+}
+
+.nav-link-container li a {
+    text-decoration: none;
+    outline: none;
+    display: block;
+    padding: 20px;
+}
+
+mat-sidenav-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-family: "decker";
+    font-size: 28px;
+}
+
+.script {
+    font-family: "coneria";
+    font-size: 32px;
+}
+
+.decker {
+    font-family: "decker";
+}
+
+.center {
+    text-align: center;
+}
+
+.left {
+    text-align: left;
+}
+
+mat-sidenav-content,
+mat-sidenav {
+    background-color: aliceblue;
+}
+
+mat-list-item a {
+    font-family: "decker";
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.container {
+    padding: 50px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img.border {
+    border: 5px solid #673ab7 !important;
+}

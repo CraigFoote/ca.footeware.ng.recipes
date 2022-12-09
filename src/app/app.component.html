@@ -1,3 +1,35 @@
-<mat-toolbar color="primary" class="mat-elevation-z5">
-  <span>Annie Foote's Recipes</span>
-</mat-toolbar>
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav mode="push">
+    <ul class="nav-link-container">
+      <li><a href="">Home</a></li>
+      <li><a href="search">Search</a></li>
+      <li><a href="browse">Browse</a></li>
+      <li><a href="add">Add a Recipe</a></li>
+    </ul>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="mat-elevation-z5">
+      <div class="center full-width">
+        <button mat-icon-button aria-label="menu icon" (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span class="script">Annie Foote's Recipes</span>
+      </div>
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+
+    <!--
+    <div class="container left">
+      <mat-form-field [style.fontSize]="24" appearance="fill">
+        <mat-label>Name</mat-label>
+        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="50"></textarea>
+      </mat-form-field>
+    </div>
+    -->
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
