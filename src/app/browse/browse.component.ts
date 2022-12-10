@@ -11,6 +11,6 @@ export class BrowseComponent {
     constructor(private recipeService: RecipeService) { }
 
     recipes(): Array<Recipe> {
-        return this.recipeService.get("/browse");
+        return this.recipeService.getAllRecipes();
     }
 }
