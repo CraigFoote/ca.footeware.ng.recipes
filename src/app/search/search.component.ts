@@ -1,44 +1,39 @@
-import { Component } from "@angular/core";
-import { FormControl } from "@angular/forms";
-import { MatChipInputEvent } from "@angular/material/chips";
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { ActivatedRoute } from '@angular/router';
 import { Recipe } from "../model/recipe";
 import { RecipeService } from "../service/recipe.service";
 
 @Component({
-    selector: "search-root",
-    templateUrl: './search.component.html',
-    styleUrls: ['./search.component.css']
+  selector: "search-root",
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css']
 })
-export class SearchComponent {
-    constructor(private recipeService: RecipeService) { }
+export class SearchComponent implements OnInit, OnDestroy {
+  term!: string;
+  private sub: any;
+  recipes: Array<Recipe> = [];
 
-    search(term: string): Array<Recipe> {
-        return this.recipeService.search(term);
-    }
+  constructor(private route: ActivatedRoute, private recipeService: RecipeService) { }
 
-    getAllTags(): Array<String> {
-        return this.recipeService.getAllTags();
-    }
+  search(searchTermRaw: string): void {
+    this.term = searchTermRaw.toString().trim().toLowerCase();
+    this.recipes = this.recipeService.search(this.term);
+  }
 
-    keywords = ['angular', 'how-to', 'tutorial', 'accessibility'];
-    formControl = new FormControl(['angular']);
-  
-    removeKeyword(keyword: string) {
-      const index = this.keywords.indexOf(keyword);
-      if (index >= 0) {
-        this.keywords.splice(index, 1);
+  getAllTags(): Array<String> {
+    return this.recipeService.getAllTags();
+  }
+
+  ngOnInit(): void {
+    this.sub = this.route.params.subscribe(params => {
+      this.term = params['term'];
+      if (this.term != undefined) {
+        this.recipes = this.recipeService.search(this.term);
       }
-    }
-  
-    add(event: MatChipInputEvent): void {
-      const value = (event.value || '').trim();
-  
-      // Add our keyword
-      if (value) {
-        this.keywords.push(value);
-      }
-  
-      // Clear the input value
-      event.chipInput!.clear();
-    }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
 }

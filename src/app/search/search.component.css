@@ -1,0 +1,22 @@
+.h1 {
+    font-size: 42px;
+    font-weight: 900;
+}
+
+.decker {
+    font-family: "decker";
+    font-size: 28px;
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+}
+
+hr {
+    border-top: 4px solid #673ab7;
+}
+
+.small {
+    font-size: 20px;
+}

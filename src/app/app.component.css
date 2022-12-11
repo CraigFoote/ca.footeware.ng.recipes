@@ -1,13 +1,3 @@
-@font-face {
-    font-family: "decker";
-    src: url(/assets/fonts/Decker.ttf) format("truetype");
-}
-
-.decker {
-    font-family: "decker";
-    font-size: 28px;
-}
-
 .nav-link-container {
     padding: 70px 10px 10px 10px;
 }

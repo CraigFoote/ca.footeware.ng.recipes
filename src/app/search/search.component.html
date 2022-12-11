@@ -1,20 +1,36 @@
 <div class="container left">
-  <mat-form-field appearance="fill" style="width: 100%">
-    <mat-label>Search</mat-label>
-    <input matInput maxlength="25" required placeholder="e.g. nanaimo">
-  </mat-form-field>
-</div>
+  <h1 class="pamber decker center">Search</h1>
 
-<div class="container left">
-  <mat-chip-listbox aria-label="Tags">
-    <mat-chip>
-      Dog one
+  <form #searchForm=ngForm (ngSubmit)="search(searchTerm.value)">
+    <div class="row" style="width: 100%;">
+      <div class="col-11">
+        <mat-form-field appearance="fill" style="width: 100%;">
+          <mat-label>Search</mat-label>
+          <input #searchTerm matInput maxlength="25" required placeholder="e.g. nanaimo">
+        </mat-form-field>
+      </div>
+      <div class="col-1">
+        <button mat-raised-button type="submit" color="primary"
+          style="height: 50px; position: relative; left: -20px;">Search</button>
+      </div>
+    </div>
+  </form>
+
+  <div class="left">
+    <span *ngIf="term != undefined && term.length > 0" class="small">{{ recipes.length }} result(s) matching '{{ term
+      }}'.</span>
+    <ol>
+      <li *ngFor="let recipe of recipes" style="padding: 20px;" role="listitem">
+        <a href="recipe/{{recipe.id}}">{{ recipe.name }}</a>
+      </li>
+    </ol>
+  </div>
+  <hr *ngIf="recipes.length > 0" />
+
+  <mat-chip-set aria-label="Tags">
+    <mat-chip *ngFor="let tag of getAllTags()" style="background-color: #ffc107;">
+      <a href="search/{{ tag }}">{{ tag }}</a>
     </mat-chip>
-    <mat-chip color="primary">
-      Dog two
-    </mat-chip>
-    <mat-chip color="accent">
-      Dog three
-    </mat-chip>
-  </mat-chip-listbox>
+  </mat-chip-set>
+  <hr />
 </div>

@@ -3,7 +3,12 @@
     "@angular/animations": "^15.0.0 || ^16.0.0",
     "@angular/cdk": "^15.0.2",
     "@angular/forms": "^15.0.0 || ^16.0.0",
-    "@angular/material": "^15.0.2"
+    "@angular/material": "^15.0.2",
+    "@angular/platform-browser": "^15.0.3",
+    "@angular/platform-browser-dynamic": "^15.0.3",
+    "@angular/router": "^15.0.3",
+    "@ng-bootstrap/ng-bootstrap": "^14.0.0",
+    "bootstrap": "^5.2.3"
   },
   "name": "ca.footeware.ng.recipes",
   "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.2.",
@@ -12,6 +17,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Footeware.ca",
+  "license": "ISC",
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^15.0.3",
+    "@types/bootstrap": "^5.2.6",
+    "@types/jest": "^29.2.4"
+  }
 }
