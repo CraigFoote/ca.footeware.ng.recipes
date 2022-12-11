@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { take } from 'rxjs/operators';
 import { Recipe } from '../model/recipe';
-import { RecipeService } from '../service/recipe.service';
+import { RecipeService } from '../service/recipe.service.mock';
 
 @Component({
   selector: 'app-recipe',

@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { Recipe } from "../model/recipe";
-import { RecipeService } from "../service/recipe.service";
+import { RecipeService } from "../service/recipe.service.mock";
 
 @Component({
     selector: "browse-root",

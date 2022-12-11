@@ -27,7 +27,7 @@ import { BrowseComponent } from './browse/browse.component';
 import { HomeComponent } from './home/home.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { SearchComponent } from './search/search.component';
-import { RecipeService } from './service/recipe.service';
+import { RecipeService } from './service/recipe.service.mock';
 
 
 @NgModule({

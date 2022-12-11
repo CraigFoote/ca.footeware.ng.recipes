@@ -2,14 +2,14 @@
   <h1 class="pamber decker center">Search</h1>
 
   <form #searchForm=ngForm (ngSubmit)="search(searchTerm.value)">
-    <div class="row" style="width: 100%;">
-      <div class="col-11">
+    <div class="row" style="width: 100%; white-space: nowrap;">
+      <div class="col">
         <mat-form-field appearance="fill" style="width: 100%;">
           <mat-label>Search</mat-label>
           <input #searchTerm matInput maxlength="25" required placeholder="e.g. nanaimo">
         </mat-form-field>
       </div>
-      <div class="col-1">
+      <div style="width: 75px;">
         <button mat-raised-button type="submit" color="primary"
           style="height: 50px; position: relative; left: -20px;">Search</button>
       </div>

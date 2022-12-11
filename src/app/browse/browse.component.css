@@ -7,13 +7,6 @@
     text-align: center;
 }
 
-.container {
-    padding: 50px;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 li a {
     text-decoration: none;
     outline: none;
