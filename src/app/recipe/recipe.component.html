@@ -1,9 +1,9 @@
 <div class="container center">
-    <h1 *ngIf="recipe" class="pamber decker">{{ recipe.name }}</h1>
+    <h1 *ngIf="recipe" class="purple decker">{{ recipe.name }}</h1>
     <div class="left">
         <mat-chip-set *ngIf="recipe" aria-label="Tags">
             <mat-chip *ngFor="let tag of recipe.tags" style="background-color: #ffc107;">
-                <a href="search/{{ tag }}">{{ tag }}</a>
+                 <a [routerLink]="'/search/tag/' + tag">{{ tag }}</a>
             </mat-chip>
         </mat-chip-set>
         <mat-form-field *ngIf="recipe" appearance="fill" style="width: 100%;">
@@ -12,7 +12,12 @@
                 style="width: 100%; background-color: transparent; padding: 0; border: 0;">{{ recipe.body }}</textarea>
         </mat-form-field>
         <div *ngIf="recipe">
-            <img alt="recipe page" *ngFor="let image of recipe.images" src="{{ image }}" style="width: 100%;" />
+            <img alt="recipe page" *ngFor="let image of recipe.images" src="{{ image }}"
+                style="margin: 5px; width: 100%; border: 4px solid #673ab7" />
+        </div>
+        <div *ngIf="recipe" class="center">
+            <button [routerLink]="'/edit/' + recipe.id" type="button" class="btn btn-primary mt-3">Edit</button>&nbsp;
+            <button (click)="this.delete()" type="button" class="btn btn-warning mt-3">Delete</button>
         </div>
     </div>
 </div>

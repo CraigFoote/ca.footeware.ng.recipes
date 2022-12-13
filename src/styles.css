@@ -42,13 +42,8 @@
     margin-right: auto;
 }
 
-.pamber {
+.purple {
     color: #673ab7;
-    text-shadow:#ffc107
-        -1px -1px 0 #ffc107,
-        1px -1px 0 #ffc107,
-        -1px 1px 0 #ffc107,
-        1px 1px 0 #ffc107;
 }
 
 img.border {

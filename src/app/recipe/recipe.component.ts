@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, NgZone, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { take } from 'rxjs/operators';
 import { Recipe } from '../model/recipe';
@@ -15,7 +15,7 @@ export class RecipeComponent implements OnInit, OnDestroy {
   recipe!: Recipe;
   private sub: any;
 
-  constructor(private route: ActivatedRoute, private recipeService: RecipeService, private ngZone: NgZone) { }
+  constructor(private route: ActivatedRoute, private recipeService: RecipeService, private ngZone: NgZone, private router: Router) { }
 
   @ViewChild('autosize') autosize!: CdkTextareaAutosize;
 
@@ -33,5 +33,12 @@ export class RecipeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();
+  }
+
+  delete() {
+    if (confirm("Are you sure you want to delete this recipe?")) {
+      this.recipeService.delete(this.recipe.id);
+      this.router.navigate(['/search']);
+    }
   }
 }

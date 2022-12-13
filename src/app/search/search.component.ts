@@ -9,16 +9,11 @@ import { RecipeService } from "../service/recipe.service.mock";
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit, OnDestroy {
-  term!: string;
   private sub: any;
+  term!: string;
   recipes: Array<Recipe> = [];
 
   constructor(private route: ActivatedRoute, private recipeService: RecipeService) { }
-
-  search(searchTermRaw: string): void {
-    this.term = searchTermRaw.toString().trim().toLowerCase();
-    this.recipes = this.recipeService.search(this.term);
-  }
 
   getAllTags(): Array<String> {
     return this.recipeService.getAllTags();
@@ -27,13 +22,24 @@ export class SearchComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
       this.term = params['term'];
-      if (this.term != undefined) {
-        this.recipes = this.recipeService.search(this.term);
+      const tag = params['tag'];
+      if (this.term != undefined && tag == undefined) {
+        this.recipes = this.recipeService.searchByAll(this.term.toString().trim().toLowerCase());
+      } else if (this.term == undefined && tag != undefined) {
+        this.term = tag;
+        this.recipes = this.recipeService.searchByTag(this.term.toString().trim().toLowerCase());
       }
     });
   }
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();
+  }
+
+  search(arg0: string) {
+    this.term = arg0;
+    if (this.term != undefined) {
+      this.recipes = this.recipeService.searchByAll(this.term.toString().trim().toLowerCase());
+    }
   }
 }

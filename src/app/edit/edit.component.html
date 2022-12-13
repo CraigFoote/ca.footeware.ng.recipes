@@ -1,0 +1,51 @@
+<div class="container center">
+    <h1 *ngIf="!recipe" class="purple decker">Add a Recipe</h1>
+    <h1 *ngIf=" recipe" class="purple decker">Edit '{{ name }}'</h1>
+    <div class="left">
+        <form #uploadPicsForm=ngForm>
+            <input (change)="this.onFilechange($event)" class="form-control" type="file" id="formFile"
+                multiple="multiple" accept="image/png, image/jpeg, image/jpg, image/bmp">
+            <button (click)="this.upload()" type="button" class="btn btn-primary mt-3">Upload</button>&nbsp;
+            <button (click)="this.clearImages()" type="button" class="btn btn-warning mt-3">Clear Images</button>
+        </form><br />
+        <img *ngFor="let base64Code of base64Codes" [src]="base64Code"
+            style="width: 100%; border: 4px solid #673ab7" /><br /><br />
+
+        <form #editForm=ngForm>
+            <mat-form-field appearance="fill" style="width: 100%;">
+                <mat-label>Name</mat-label>
+                <input name="nameInput" [(ngModel)]="name" matInput maxlength="25" />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" style="width: 100%;">
+                <mat-label>Body</mat-label>
+                <textarea name="bodyInput" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                    cdkAutosizeMinRows="1" [(ngModel)]="body"
+                    style="width: 100%; background-color: transparent; padding: 0; border: 0;"></textarea>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" style="width: 100%;">
+                <mat-label>Tags</mat-label>
+                <mat-chip-grid #chipGrid aria-label="Tags" required="required">
+                    <mat-chip-row *ngFor="let tag of tags" (removed)="remove(tag)" style="background-color: #FFC107">
+                        {{ tag }}
+                        <button matChipRemove [attr.aria-label]="'remove ' + tag">
+                            <mat-icon>cancel</mat-icon>
+                        </button>
+                    </mat-chip-row>
+                </mat-chip-grid>
+                <input placeholder="New Tag..." #tagsInput [formControl]="tagCtrl" [matChipInputFor]="chipGrid"
+                    [matAutocomplete]="auto" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    (matChipInputTokenEnd)="add($event)" style=" width: 100%" />
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                    <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+                        {{ tag }}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <input *ngIf="!recipe" type="submit" class="btn btn-primary mt-3" (click)="create()" value="Create" />&nbsp;
+            <input *ngIf="recipe" type="submit" class="btn btn-primary mt-3" (click)="update()" value="Update" />&nbsp;
+            <span style="font-size: 20px;">{{ result }}</span>
+        </form>
+    </div>
+</div>

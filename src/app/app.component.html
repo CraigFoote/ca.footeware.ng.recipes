@@ -3,10 +3,10 @@
   <mat-sidenav #sidenav mode="push"
     style="background-image: url(/assets/images/corner.png); background-repeat: no-repeat; background-color: #444;">
     <ul class="nav-link-container">
-      <li><a href="">Home</a></li>
-      <li><a href="search">Search</a></li>
-      <li><a href="browse">Browse</a></li>
-      <li><a href="add">Add a Recipe</a></li>
+      <li><a [routerLink]="''" (click)="sidenav.toggle()">Home</a></li>
+      <li><a [routerLink]="'search'" (click)="sidenav.toggle()">Search</a></li>
+      <li><a [routerLink]="'browse'" (click)="sidenav.toggle()">Browse</a></li>
+      <li><a [routerLink]="'add'" (click)="sidenav.toggle()">Add a Recipe</a></li>
     </ul>
   </mat-sidenav>
   <mat-sidenav-content>
