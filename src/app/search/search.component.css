@@ -8,15 +8,20 @@
     font-size: 28px;
 }
 
-a {
-    text-decoration: none;
-    outline: none;
-}
-
 hr {
-    border-top: 4px solid #673ab7;
+    /* border-top: 4px solid #673ab7; */
+    background-color: #673ab7;
+    color:#673ab7;
+    border: 1px solid #673ab7;
+    height: 5px;
 }
 
 .small {
     font-size: 20px;
+}
+
+mat-paginator {
+    border: 3px solid #673ab7;
+    font-size: large;
+    background-color: #FFC107;
 }

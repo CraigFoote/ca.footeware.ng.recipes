@@ -31,34 +31,39 @@ export class RecipeService {
         return set;
     }
 
-    searchByTag(term: string): Array<Recipe> {
-        const searchTerm = term.toString().trim().toLowerCase();
-        const results = [];
-        if (term != null && term != undefined) {
-            for (const recipe of this.RECIPES) {
-                if (recipe.tags.includes(searchTerm)) {
-                    results.push(recipe);
-                }
-            }
-        }
-        return results;
+    getAllByPage(pageIndex: number, pageSize: number): [number, Recipe[]] {
+        const slice = this.RECIPES.slice((pageIndex - 1) * pageSize, pageIndex * pageSize);
+        return [this.RECIPES.length, slice];
     }
 
-    searchByAll(term: string): Array<Recipe> {
-        const searchTerm = term.toString().trim().toLowerCase();
+    searchTagsByPage(term: string, pageIndex: number, pageSize: number): [number, Recipe[]] {
         const results = [];
         if (term != null && term != undefined) {
             for (const recipe of this.RECIPES) {
-                if (recipe.tags.includes(searchTerm)) {
-                    results.push(recipe);
-                } else if (recipe.name.includes(searchTerm)) {
-                    results.push(recipe);
-                } else if (recipe.body.includes(searchTerm)) {
+                if (recipe.tags.includes(term)) {
                     results.push(recipe);
                 }
             }
         }
-        return results;
+        const slice = results.slice((pageIndex - 1) * pageSize, pageIndex * pageSize);
+        return [results.length, slice];
+    }
+
+    searchAllByPage(term: string, pageIndex: number, pageSize: number): [number, Recipe[]] {
+        const results = [];
+        if (term != null && term != undefined) {
+            for (const recipe of this.RECIPES) {
+                if (recipe.tags.includes(term)) {
+                    results.push(recipe);
+                } else if (recipe.name.includes(term)) {
+                    results.push(recipe);
+                } else if (recipe.body.includes(term)) {
+                    results.push(recipe);
+                }
+            }
+        }
+        const slice = results.slice((pageIndex - 1) * pageSize, pageIndex * pageSize);
+        return [results.length, slice];
     }
 
     get(id: string): Recipe {
@@ -96,10 +101,5 @@ export class RecipeService {
             }
         }
         throw new Error("No recipe found with id=" + id);
-    }
-
-    getRecipesByPage(pageIndex: number, pageSize: number): [number, Recipe[]] {
-        const slice = this.RECIPES.slice((pageIndex - 1) * pageSize, pageIndex * pageSize);
-        return [this.RECIPES.length, slice];
     }
 }

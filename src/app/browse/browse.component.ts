@@ -10,7 +10,7 @@ import { PageEvent } from '@angular/material/paginator';
 })
 export class BrowseComponent implements OnInit {
     length!: number;
-    pageSize = 2;
+    pageSize = 10;
     pageIndex = 0;
     recipes!: Recipe[];
 
@@ -25,12 +25,9 @@ export class BrowseComponent implements OnInit {
         this.getRecipes(this.pageIndex + 1, this.pageSize);
     }
 
-    private getRecipes(pageIndex: number, pageSize: number) {
-        const results = this.recipeService.getRecipesByPage(pageIndex, this.pageSize);
+    private getRecipes(pageIdx: number, pageSize2: number) {
+        const results = this.recipeService.getAllByPage(pageIdx, pageSize2);
         this.length = results[0];
         this.recipes = results[1];
-        for (const r of this.recipes) {
-            console.log(r.name);
-        }
     }
 }

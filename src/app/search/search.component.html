@@ -17,16 +17,22 @@
   </form>
 
   <div class="left">
-    <span *ngIf="term != undefined && term.length > 0" class="small">{{ recipes.length }} result(s) matching '{{ term
+    <span *ngIf="term != undefined && term.length > 0" class="small">{{ length }} result(s) matching '{{ term
       }}'.</span>
-    <ol>
+      <span *ngIf="tag != undefined && tag.length > 0" class="small">{{ length }} results(s) with tag matching '{{ tag
+      }}'.</span>
+    <ul>
       <li *ngFor="let recipe of recipes" style="padding: 20px;" role="listitem">
         <a [routerLink]="'/recipe/' + recipe.id">{{ recipe.name }}</a>
       </li>
-    </ol>
+    </ul>
   </div>
-  <hr *ngIf="recipes.length > 0" />
+  <mat-paginator *ngIf="recipes.length > 0" #paginator (page)="handlePageEvent($event)" [length]="length" [pageSize]="pageSize" [disabled]=false
+    [showFirstLastButtons]=true [pageSizeOptions]=[] [hidePageSize]=true [pageIndex]="pageIndex"
+    aria-label="Select page">
+  </mat-paginator>
 
+  <hr />
   <mat-chip-set aria-label="Tags">
     <mat-chip *ngFor="let tag of getAllTags()" style="background-color: #ffc107;">
       <a [routerLink]="'/search/tag/' + tag">{{ tag }}</a>

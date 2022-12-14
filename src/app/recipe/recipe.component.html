@@ -17,7 +17,7 @@
         </div>
         <div *ngIf="recipe" class="center">
             <button [routerLink]="'/edit/' + recipe.id" type="button" class="btn btn-primary mt-3">Edit</button>&nbsp;
-            <button (click)="this.delete()" type="button" class="btn btn-warning mt-3">Delete</button>
+            <button (click)="this.delete()" type="button" class="btn btn-danger mt-3">Delete</button>
         </div>
     </div>
 </div>

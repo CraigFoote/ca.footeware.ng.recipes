@@ -1,18 +1,5 @@
-.decker {
-    font-family: "decker";
-    font-size: 28px;
-}
-
-.center {
-    text-align: center;
-}
-
-li a {
-    text-decoration: none;
-    outline: none;
-}
-
-img {
-    width: 100%;
-    padding: 0;
+mat-paginator {
+    border: 3px solid #673ab7;
+    font-size: large;
+    background-color: #FFC107;
 }

@@ -46,7 +46,12 @@
     color: #673ab7;
 }
 
-img.border {
+a {
+    text-decoration: none;
+    outline: none;
+}
+
+.border {
     border: 5px solid #673ab7 !important;
 }
 
