@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Recipe } from "../model/recipe";
 import { RecipeService } from "../service/recipe.service.mock";
 import { PageEvent } from '@angular/material/paginator';
@@ -8,24 +8,29 @@ import { PageEvent } from '@angular/material/paginator';
     templateUrl: './browse.component.html',
     styleUrls: ['./browse.component.css']
 })
-export class BrowseComponent {
+export class BrowseComponent implements OnInit {
     length!: number;
     pageSize = 2;
     pageIndex = 0;
-    pageEvent!: PageEvent;
+    recipes!: Recipe[];
 
     constructor(private recipeService: RecipeService) { }
 
-    recipes(): Array<Recipe> {
-        const results = this.recipeService.getAllRecipes();
-        this.length = results.length;
-        return results.slice();
+    ngOnInit(): void {
+        this.getRecipes(this.pageIndex + 1, this.pageSize);
     }
 
     handlePageEvent(e: PageEvent) {
-        this.pageEvent = e;
-        console.log(e);
-        this.pageSize = e.pageSize;
         this.pageIndex = e.pageIndex;
+        this.getRecipes(this.pageIndex + 1, this.pageSize);
+    }
+
+    private getRecipes(pageIndex: number, pageSize: number) {
+        const results = this.recipeService.getRecipesByPage(pageIndex, this.pageSize);
+        this.length = results[0];
+        this.recipes = results[1];
+        for (const r of this.recipes) {
+            console.log(r.name);
+        }
     }
 }
