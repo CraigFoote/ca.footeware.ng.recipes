@@ -88,16 +88,24 @@ export class EditComponent implements OnInit, OnDestroy {
   }
 
   create() {
-    const newRecipe = this.recipeService.create(this.name, this.body, this.tags, this.base64Codes);
-    if (newRecipe == null || newRecipe == undefined) {
-      this.result = "Failure!";
+    if (this.name == undefined) {
+      this.result = "Missing name."
+    } else if (this.body == undefined) {
+      this.result = "Missing body."
+    } else if (this.tags.length == 0) {
+      this.result = "Missing tags."
     } else {
-      this.result = "Success!";
+      const newRecipe = this.recipeService.create(this.name, this.body, this.tags, this.base64Codes);
+      if (newRecipe == null || newRecipe == undefined) {
+        this.result = "Failure!";
+      } else {
+        this.result = "Success!";
+      }
+      this.name = "";
+      this.body = "";
+      this.tags = [];
+      this.base64Codes = [];
     }
-    this.name = "";
-    this.body = "";
-    this.tags = [];
-    this.base64Codes = [];
   }
 
   files: Array<File> = [];
@@ -136,13 +144,21 @@ export class EditComponent implements OnInit, OnDestroy {
   }
 
   update() {
-    const updated: Recipe = this.recipeService.update(this.recipe.id, this.name, this.body,
-      this.tags, this.base64Codes);
-    if (updated != null && updated != undefined) {
-      this.result = "Success!"
+    if (this.name == undefined || this.name.length == 0) {
+      this.result = "Missing name."
+    } else if (this.body == undefined || this.body.length == 0) {
+      this.result = "Missing body."
+    } else if (this.tags.length == 0 || this.tags.length == 0) {
+      this.result = "Missing tags."
     } else {
-      this.result = "Failure!";
+      const updated: Recipe = this.recipeService.update(this.recipe.id, this.name, this.body,
+        this.tags, this.base64Codes);
+      if (updated != null && updated != undefined) {
+        this.result = "Success!"
+      } else {
+        this.result = "Failure!";
+      }
+      this.router.navigate(['/recipe/' + this.id]);
     }
-    this.router.navigate(['/recipe/' + this.id]);
   }
 }
