@@ -44,10 +44,10 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   search(arg0: string) {
-    this.pageIndex = 0;
-    this.tag = "";
-    this.term = arg0;
-    if (arg0 != undefined) {
+    if (arg0 != undefined && arg0.trim().length > 0) {
+      this.pageIndex = 0;
+      this.tag = "";
+      this.term = arg0;
       this.term = this.term.toString().trim().toLowerCase();
       this.searchAll(this.term);
     }

@@ -5,7 +5,7 @@
         <form #uploadPicsForm=ngForm>
             <input (change)="this.onFilechange($event)" class="form-control" type="file" id="formFile"
                 multiple="multiple" accept="image/png, image/jpeg, image/jpg, image/bmp">
-            <button (click)="this.upload()" type="button" class="btn btn-primary mt-3">Upload</button>&nbsp;
+            <button (click)="this.upload()" type="button" class="btn btn-primary mt-3">Upload Pictures</button>&nbsp;
             <button (click)="this.clearImages()" type="button" class="btn btn-warning mt-3">Clear Images</button>
         </form><br />
         <img *ngFor="let base64Code of base64Codes" [src]="base64Code"
