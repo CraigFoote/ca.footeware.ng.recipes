@@ -4,12 +4,12 @@
 
 @font-face {
     font-family: "coneria";
-    src: url(/assets/fonts/ConeriaScript.ttf) format("truetype");
+    src: url(assets/fonts/ConeriaScript.ttf) format("truetype");
 }
 
 @font-face {
     font-family: "decker";
-    src: url(/assets/fonts/Decker.ttf) format("truetype");
+    src: url(assets/fonts/Decker.ttf) format("truetype");
 }
 
 .decker {

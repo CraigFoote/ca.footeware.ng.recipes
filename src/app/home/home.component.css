@@ -1,6 +1,6 @@
 @font-face {
     font-family: "decker";
-    src: url(/assets/fonts/Decker.ttf) format("truetype");
+    src: url(../../assets/fonts/Decker.ttf) format("truetype");
 }
 
 .decker {
