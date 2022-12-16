@@ -22,6 +22,6 @@ hr {
 
 mat-paginator {
     border: 3px solid #673ab7;
-    font-size: large;
+    font-size: 13px;
     background-color: #FFC107;
 }
