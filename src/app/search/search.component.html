@@ -34,9 +34,7 @@
     aria-label="Select page">
   </mat-paginator>
 
-  <!--<hr />-->
-  <div *ngIf="loading" class="small">loading...</div>
-  <mat-chip-set aria-label="Tags" style="border-top: 4px solid #673ab7">
+  <mat-chip-set *ngIf="allTags.length > 0" aria-label="Tags">
     <mat-chip *ngFor="let tag of allTags" style="background-color: #ffc107;">
       <a [routerLink]="'/search/tag/' + tag">{{ tag }}</a>
     </mat-chip>

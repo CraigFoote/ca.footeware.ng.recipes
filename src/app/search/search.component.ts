@@ -47,6 +47,7 @@ export class SearchComponent implements OnInit, OnDestroy {
       error: error => {
         console.error('There was an error!', error.message);
         this.loading = false;
+        alert(error.message);
       }
     });
   }
@@ -87,6 +88,7 @@ export class SearchComponent implements OnInit, OnDestroy {
       error: error => {
         console.error('There was an error!', error.message);
         this.loading = false;
+        alert(error.message);
       }
     });
   }
@@ -104,6 +106,7 @@ export class SearchComponent implements OnInit, OnDestroy {
       error: error => {
         console.error('There was an error!', error.message);
         this.loading = false;
+        alert(error.message);
       }
     });
   }

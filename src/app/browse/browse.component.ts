@@ -40,6 +40,7 @@ export class BrowseComponent implements OnInit {
             error: error => {
                 console.error('There was an error!', error.message);
                 this.loading = false;
+                alert(error.message);
             }
         });
     }

@@ -37,6 +37,7 @@ export class RecipeComponent implements OnInit, OnDestroy {
         error: error => {
           console.error('There was an error!', error.message);
           this.loading = false;
+          alert(error.message);
         }
       });
     });
