@@ -1,13 +1,14 @@
 <div class="container center">
     <h1 class="purple decker">Browse</h1>
     <div class="left">
-        <ul *ngIf="recipes">
+        <div *ngIf="loading" class="small">loading...</div>
+        <ul *ngIf="!loading">
             <li *ngFor="let recipe of recipes" style="padding-top: 30px;" role="listitem">
                 <a [routerLink]="'/recipe/' + recipe.id">{{recipe.name}}</a>
             </li>
         </ul>
     </div>
-    <mat-paginator #paginator (page)="handlePageEvent($event)" [length]="length" [pageSize]="pageSize" [disabled]=false
+    <mat-paginator *ngIf="!loading" #paginator (page)="handlePageEvent($event)" [length]="length" [pageSize]="pageSize" [disabled]=false
         [showFirstLastButtons]=true [pageSizeOptions]=[] [hidePageSize]=true [pageIndex]="pageIndex"
         aria-label="Select page">
     </mat-paginator>

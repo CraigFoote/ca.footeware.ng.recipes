@@ -24,7 +24,9 @@
                     style="width: 100%; background-color: transparent; padding: 0; border: 0;"></textarea>
             </mat-form-field>
 
-            <mat-form-field appearance="fill" style="width: 100%;" req>
+            <div *ngIf="loading" class="small">loading...</div>
+
+            <mat-form-field *ngIf="!loading" appearance="fill" style="width: 100%;" req>
                 <mat-label>Tags</mat-label>
                 <mat-chip-grid #chipGrid aria-label="Tags" required="required">
                     <mat-chip-row *ngFor="let tag of tags" (removed)="remove(tag)" style="background-color: #FFC107">

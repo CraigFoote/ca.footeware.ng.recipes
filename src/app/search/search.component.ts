@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { ActivatedRoute } from '@angular/router';
 import { Recipe } from "../model/recipe";
-import { RecipeService } from "../service/recipe.service.mock";
+import { RecipeService } from "../service/recipe.service";
 import { PageEvent } from '@angular/material/paginator';
+import { PagingDTO } from "../model/pagingDTO";
 
 @Component({
   selector: "search-root",
@@ -14,27 +15,38 @@ export class SearchComponent implements OnInit, OnDestroy {
   term!: string;
   tag!: string;
   recipes: Array<Recipe> = [];
+  allTags: Array<string> = [];
   length!: number;
   pageSize = 10;
-  pageIndex = 0;
+  pageNumber = 0;
+  loading: boolean = false;
 
   constructor(private route: ActivatedRoute, private recipeService: RecipeService) { }
 
-  getAllTags(): Array<String> {
-    return this.recipeService.getAllTags();
-  }
-
   ngOnInit(): void {
+    // search params
     this.sub = this.route.params.subscribe(params => {
       this.term = params['term'];
       const tag = params['tag'];
-      this.pageIndex = 0;
+      this.pageNumber = 0;
       if (this.term != undefined && tag == undefined) {
         this.term = this.term.toString().trim().toLowerCase();
         this.searchAll(this.term);
       } else if (this.term == undefined && tag != undefined) {
         this.tag = tag;
         this.searchTags(this.tag);
+      }
+    });
+    // wait for all tags
+    this.loading = true;
+    this.recipeService.getAllTags().subscribe({
+      next: data => {
+        this.allTags = data;
+        this.loading = false;
+      },
+      error: error => {
+        console.error('There was an error!', error.message);
+        this.loading = false;
       }
     });
   }
@@ -45,7 +57,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   search(arg0: string) {
     if (arg0 != undefined && arg0.trim().length > 0) {
-      this.pageIndex = 0;
+      this.pageNumber = 0;
       this.tag = "";
       this.term = arg0;
       this.term = this.term.toString().trim().toLowerCase();
@@ -54,7 +66,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   handlePageEvent(e: PageEvent) {
-    this.pageIndex = e.pageIndex;
+    this.pageNumber = e.pageIndex;
     if (this.tag != undefined && this.tag.length > 0) {
       this.searchTags(this.tag);
     } else {
@@ -63,15 +75,36 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   private searchAll(term: string) {
-    const results = this.recipeService.searchAllByPage(term, this.pageIndex + 1, this.pageSize);
-    this.length = results[0];
-    this.recipes = results[1];
+    // wait for response
+    this.loading = true;
+    const results = this.recipeService.searchAllByPage(term, this.pageNumber, this.pageSize).subscribe({
+      next: data => {
+        const dto: PagingDTO = data;
+        this.length = dto.total;
+        this.recipes = dto.recipes;
+        this.loading = false;
+      },
+      error: error => {
+        console.error('There was an error!', error.message);
+        this.loading = false;
+      }
+    });
   }
 
   private searchTags(tag: string) {
-    const results = this.recipeService.searchTagsByPage(tag, this.pageIndex + 1, this.pageSize);
-    this.length = results[0];
-    this.recipes = results[1];
+    // wait for response
+    this.loading = true;
+    const results = this.recipeService.searchTagsByPage(tag, this.pageNumber, this.pageSize).subscribe({
+      next: data => {
+        const dto: PagingDTO = data;
+        this.length = dto.total;
+        this.recipes = dto.recipes;
+        this.loading = false;
+      },
+      error: error => {
+        console.error('There was an error!', error.message);
+        this.loading = false;
+      }
+    });
   }
 }
-

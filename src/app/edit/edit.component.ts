@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscriber } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { Recipe } from '../model/recipe';
-import { RecipeService } from '../service/recipe.service.mock';
+import { RecipeService } from '../service/recipe.service';
 
 @Component({
   selector: 'app-edit',
@@ -19,7 +19,7 @@ export class EditComponent implements OnInit, OnDestroy {
   tagCtrl = new FormControl('');
   filteredTags: Observable<string[]>;
   tags: string[] = [];
-  allTags!: string[];
+  allTags: string[] = [];
   base64Codes: Array<string> = [];
   name!: string;
   body!: string;
@@ -27,26 +27,49 @@ export class EditComponent implements OnInit, OnDestroy {
   private id!: string;
   private sub: any;
   recipe!: Recipe;
+  loading: boolean = false;
 
   @ViewChild('tagsInput') tagsInput!: ElementRef<HTMLTextAreaElement> | null;
 
   constructor(private recipeService: RecipeService, private route: ActivatedRoute, private router: Router) {
+    // respond to tag selection
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((tag: string | null) => (tag ? this._filter(tag) : this.allTags.slice())),
     );
-    this.allTags = recipeService.getAllTags();
   }
 
   ngOnInit(): void {
+    // wait for all tags
+    this.loading = true;
+    this.recipeService.getAllTags().subscribe({
+      next: data => {
+        this.allTags = data;
+        this.loading = false;
+      },
+      error: error => {
+        console.error('There was an error!', error.message);
+        this.loading = false;
+      }
+    });
+    // get the id of the selected recipe
     this.sub = this.route.params.subscribe(params => {
       if (params['id'] != undefined) {
         this.id = params['id'];
-        this.recipe = this.recipeService.get(this.id);
-        this.name = this.recipe.name;
-        this.body = this.recipe.body;
-        this.tags = this.recipe.tags;
-        this.base64Codes = this.recipe.images;
+        this.recipeService.get(this.id).subscribe({
+          next: data => {
+            this.recipe = data;
+            this.name = this.recipe.name;
+            this.body = this.recipe.body;
+            this.tags = this.recipe.tags;
+            this.base64Codes = this.recipe.images;
+            this.loading = false;
+          },
+          error: error => {
+            console.error('There was an error!', error.message);
+            this.loading = false;
+          }
+        });
       }
     });
   }
@@ -95,16 +118,24 @@ export class EditComponent implements OnInit, OnDestroy {
     } else if (this.tags.length == 0) {
       this.result = "Missing tags."
     } else {
-      const newRecipe = this.recipeService.create(this.name, this.body, this.tags, this.base64Codes);
-      if (newRecipe == null || newRecipe == undefined) {
-        this.result = "Failure!";
-      } else {
-        this.result = "Success!";
-      }
-      this.name = "";
-      this.body = "";
-      this.tags = [];
-      this.base64Codes = [];
+      // wait for the response
+      this.loading = true;
+      this.recipeService.create(this.name, this.body, this.tags, this.base64Codes).subscribe({
+        next: data => {
+          if (data != undefined) {
+            this.result = "Success!";
+            this.name = "";
+            this.body = "";
+            this.tags = [];
+            this.base64Codes = [];
+            this.loading = false;
+          };
+        },
+        error: error => {
+          console.error('There was an error!', error.message);
+          this.loading = false;
+        }
+      });
     }
   }
 
@@ -151,14 +182,27 @@ export class EditComponent implements OnInit, OnDestroy {
     } else if (this.tags.length == 0 || this.tags.length == 0) {
       this.result = "Missing tags."
     } else {
-      const updated: Recipe = this.recipeService.update(this.recipe.id, this.name, this.body,
-        this.tags, this.base64Codes);
-      if (updated != null && updated != undefined) {
-        this.result = "Success!"
-      } else {
-        this.result = "Failure!";
-      }
-      this.router.navigate(['/recipe/' + this.id]);
+      // wait for the response
+      this.loading = true;
+      this.recipeService.update(this.recipe.id, this.name, this.body, this.tags, this.base64Codes).subscribe({
+        next: data => {
+          if (data != undefined) {
+            this.result = "Success!";
+            this.name = "";
+            this.body = "";
+            this.tags = [];
+            this.base64Codes = [];
+            this.loading = false;
+            this.router.navigate(['/recipe/' + this.id]);
+          } else {
+            this.result = "Failure!";
+          }
+        },
+        error: error => {
+          console.error('There was an error!', error.message);
+          this.loading = false;
+        }
+      });
     }
   }
 }

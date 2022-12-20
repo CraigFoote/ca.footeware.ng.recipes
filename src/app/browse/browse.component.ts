@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Recipe } from "../model/recipe";
-import { RecipeService } from "../service/recipe.service.mock";
+import { RecipeService } from "../service/recipe.service";
 import { PageEvent } from '@angular/material/paginator';
+import { PagingDTO } from "../model/pagingDTO";
 
 @Component({
     selector: "browse-root",
@@ -13,21 +14,33 @@ export class BrowseComponent implements OnInit {
     pageSize = 10;
     pageIndex = 0;
     recipes!: Recipe[];
+    loading: boolean = false;
 
     constructor(private recipeService: RecipeService) { }
 
     ngOnInit(): void {
-        this.getRecipes(this.pageIndex + 1, this.pageSize);
+        this.getRecipes();
     }
 
     handlePageEvent(e: PageEvent) {
         this.pageIndex = e.pageIndex;
-        this.getRecipes(this.pageIndex + 1, this.pageSize);
+        this.getRecipes();
     }
 
-    private getRecipes(pageIdx: number, pageSize2: number) {
-        const results = this.recipeService.getAllByPage(pageIdx, pageSize2);
-        this.length = results[0];
-        this.recipes = results[1];
+    private getRecipes() {
+        // wait for response
+        this.loading = true;
+        this.recipeService.getAllByPage(this.pageIndex, this.pageSize).subscribe({
+            next: data => {
+                const dto: PagingDTO = data;
+                this.length = dto.total;
+                this.recipes = dto.recipes;
+                this.loading = false;
+            },
+            error: error => {
+                console.error('There was an error!', error.message);
+                this.loading = false;
+            }
+        });
     }
 }

@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { take } from 'rxjs/operators';
 import { Recipe } from '../model/recipe';
-import { RecipeService } from '../service/recipe.service.mock';
+import { RecipeService } from '../service/recipe.service';
 
 @Component({
   selector: 'app-recipe',
@@ -11,9 +11,9 @@ import { RecipeService } from '../service/recipe.service.mock';
   styleUrls: ['./recipe.component.css']
 })
 export class RecipeComponent implements OnInit, OnDestroy {
-  private id!: string;
-  recipe!: Recipe;
   private sub: any;
+  recipe!: Recipe;
+  loading: boolean = false;
 
   constructor(private route: ActivatedRoute, private recipeService: RecipeService, private ngZone: NgZone, private router: Router) { }
 
@@ -26,8 +26,19 @@ export class RecipeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
-      this.id = params['id'];
-      this.recipe = this.recipeService.get(this.id);
+      const id = params['id'];
+      // wait for response
+      this.loading = true;
+      this.recipeService.get(id).subscribe({
+        next: data => {
+          this.recipe = data;
+          this.loading = false;
+        },
+        error: error => {
+          console.error('There was an error!', error.message);
+          this.loading = false;
+        }
+      });
     });
   }
 
@@ -37,8 +48,19 @@ export class RecipeComponent implements OnInit, OnDestroy {
 
   delete() {
     if (confirm("Are you sure you want to delete this recipe?")) {
-      this.recipeService.delete(this.recipe.id);
-      this.router.navigate(['/search']);
+      // wait for response
+      this.loading = true;
+      this.recipeService.delete(this.recipe.id).subscribe({
+        next: data => {
+          this.loading = false;
+          this.router.navigate(['/search']);
+        },
+        error: error => {
+          console.error('There was an error!', error.message);
+          this.loading = false;
+          alert(error.message);
+        }
+      });
     }
   }
 }
