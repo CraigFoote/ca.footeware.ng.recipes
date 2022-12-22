@@ -2,7 +2,7 @@
     <div *ngIf="loading" class="small">loading...</div>
     <h1 *ngIf="!loading" class="purple decker">{{ recipe.name }}</h1>
     <div class="left" *ngIf="!loading">
-        <mat-chip-set aria-label="Tags" class="animate__animated animate__lightSpeedInRight">
+        <mat-chip-set aria-label="Tags" class="animate__animated animate__slideInDown">
             <mat-chip *ngFor="let tag of recipe.tags" style="background-color: #ffc107;">
                  <a [routerLink]="'/search/tag/' + tag">{{ tag }}</a>
             </mat-chip>
