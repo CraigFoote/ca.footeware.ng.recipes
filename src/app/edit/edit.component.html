@@ -1,6 +1,9 @@
 <div class="container center">
     <h1 *ngIf="!recipe" class="purple decker">Add a Recipe</h1>
     <h1 *ngIf=" recipe" class="purple decker">Edit '{{ name }}'</h1>
+
+    <img *ngIf="loading" src="../../assets/images/loading.gif" />
+
     <div class="left">
         <form #uploadPicsForm=ngForm>
             <input (change)="this.onFilechange($event)" class="form-control" type="file" id="formFile"
@@ -23,8 +26,6 @@
                     cdkAutosizeMinRows="1" [(ngModel)]="body"
                     style="width: 100%; background-color: transparent; padding: 0; border: 0;"></textarea>
             </mat-form-field>
-
-            <div *ngIf="loading" class="small">loading...</div>
 
             <mat-form-field *ngIf="!loading" appearance="fill" style="width: 100%;" req>
                 <mat-label>Tags</mat-label>

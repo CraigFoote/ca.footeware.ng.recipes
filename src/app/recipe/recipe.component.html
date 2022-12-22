@@ -1,12 +1,12 @@
 <div class="container center">
-    <div *ngIf="loading" class="small">loading...</div>
+    <img *ngIf="loading" src="../../assets/images/loading.gif" />
     <h1 *ngIf="!loading" class="purple decker">{{ recipe.name }}</h1>
     <div class="left" *ngIf="!loading">
         <mat-chip-set aria-label="Tags" class="animate__animated animate__slideInDown">
             <mat-chip *ngFor="let tag of recipe.tags" style="background-color: #ffc107;">
-                 <a [routerLink]="'/search/tag/' + tag">{{ tag }}</a>
+                <a [routerLink]="'/search/tag/' + tag">{{ tag }}</a>
             </mat-chip>
-        </mat-chip-set>        
+        </mat-chip-set>
         <mat-form-field appearance="fill" style="width: 100%;">
             <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
                 readonly="readonly"

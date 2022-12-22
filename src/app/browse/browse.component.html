@@ -1,7 +1,7 @@
 <div class="container center">
     <h1 class="purple decker">Browse</h1>
+    <img *ngIf="loading" src="../../assets/images/loading.gif" />
     <div class="left">
-        <div *ngIf="loading" class="small">loading...</div>
         <ul *ngIf="!loading">
             <li *ngFor="let recipe of recipes" style="padding-top: 30px;" role="listitem" class="animate__animated animate__fadeIn">
                 <a [routerLink]="'/recipe/' + recipe.id">{{recipe.name}}</a>
