@@ -4,6 +4,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { take } from 'rxjs/operators';
 import { Recipe } from '../model/recipe';
 import { RecipeService } from '../service/recipe.service';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-recipe',
@@ -14,8 +15,11 @@ export class RecipeComponent implements OnInit, OnDestroy {
   private sub: any;
   recipe!: Recipe;
   loading: boolean = false;
+  authService!: AuthService;
 
-  constructor(private route: ActivatedRoute, private recipeService: RecipeService, private ngZone: NgZone, private router: Router) { }
+  constructor(private route: ActivatedRoute, private recipeService: RecipeService, private ngZone: NgZone, private router: Router, authService: AuthService) {
+    this.authService = authService;
+  }
 
   @ViewChild('autosize') autosize!: CdkTextareaAutosize;
 

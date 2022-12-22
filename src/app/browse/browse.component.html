@@ -3,7 +3,7 @@
     <div class="left">
         <div *ngIf="loading" class="small">loading...</div>
         <ul *ngIf="!loading">
-            <li *ngFor="let recipe of recipes" style="padding-top: 30px;" role="listitem">
+            <li *ngFor="let recipe of recipes" style="padding-top: 30px;" role="listitem" class="animate__animated animate__fadeIn">
                 <a [routerLink]="'/recipe/' + recipe.id">{{recipe.name}}</a>
             </li>
         </ul>

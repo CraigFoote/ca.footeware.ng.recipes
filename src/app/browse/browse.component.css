@@ -2,4 +2,5 @@ mat-paginator {
     border: 3px solid #673ab7;
     font-size: large;
     background-color: #FFC107;
+    border-radius: 5px;
 }

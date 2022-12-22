@@ -2,7 +2,7 @@
     <div *ngIf="loading" class="small">loading...</div>
     <h1 *ngIf="!loading" class="purple decker">{{ recipe.name }}</h1>
     <div class="left" *ngIf="!loading">
-        <mat-chip-set aria-label="Tags">
+        <mat-chip-set aria-label="Tags" class="animate__animated animate__lightSpeedInRight">
             <mat-chip *ngFor="let tag of recipe.tags" style="background-color: #ffc107;">
                  <a [routerLink]="'/search/tag/' + tag">{{ tag }}</a>
             </mat-chip>
@@ -16,7 +16,7 @@
             <img alt="recipe page" *ngFor="let image of recipe.images" src="{{ image }}"
                 style="margin: 5px; width: 100%; border: 4px solid #673ab7" />
         </div>
-        <div class="center">
+        <div class="center" *ngIf="authService.authenticated">
             <button [routerLink]="'/edit/' + recipe.id" type="button" class="btn btn-primary mt-3">Edit</button>&nbsp;
             <button (click)="this.delete()" type="button" class="btn btn-danger mt-3">Delete</button>
         </div>

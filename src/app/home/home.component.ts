@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../service/auth.service';
 
 @Component({
     selector: 'home-root',
@@ -6,4 +7,9 @@ import { Component } from '@angular/core';
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+    authService!: AuthService;
+
+    constructor(authService: AuthService){
+        this.authService = authService;
+    }
 }

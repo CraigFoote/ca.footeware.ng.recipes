@@ -17,6 +17,7 @@ mat-chip-set {
 
 mat-paginator {
     border: 3px solid #673ab7;
+    border-radius: 5px;
     font-size: 13px;
     background-color: #FFC107;
 }

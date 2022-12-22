@@ -31,6 +31,7 @@ import { HomeComponent } from './home/home.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { SearchComponent } from './search/search.component';
 import { EditComponent } from './edit/edit.component';
+import { AuthComponent } from './auth/auth.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { EditComponent } from './edit/edit.component';
     SearchComponent,
     RecipeComponent,
     EditComponent,
+    AuthComponent,
   ],
   imports: [
     CommonModule,

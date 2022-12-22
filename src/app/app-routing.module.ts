@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { EditComponent } from './edit/edit.component';
+import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'recipe/:id', component: RecipeComponent },
   { path: 'add', component: EditComponent },
   { path: 'edit/:id', component: EditComponent },
+  { path: 'login', component: AuthComponent },
 ];
 
 @NgModule({
