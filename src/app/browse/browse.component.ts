@@ -34,7 +34,9 @@ export class BrowseComponent implements OnInit {
             next: data => {
                 const dto: PagingDTO = data;
                 this.length = dto.total;
-                this.recipes = dto.recipes;
+                const unsorted = dto.recipes;
+                const sorted = unsorted.sort((a,b) => a.name.localeCompare(b.name));
+                this.recipes = sorted;
                 this.loading = false;
             },
             error: error => {
