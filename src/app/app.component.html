@@ -6,6 +6,7 @@
       <li><a [routerLink]="''" (click)="sidenav.toggle()">Home</a></li>
       <li><a [routerLink]="'search'" (click)="sidenav.toggle()">Search</a></li>
       <li><a [routerLink]="'browse'" (click)="sidenav.toggle()">Browse</a></li>
+      <li><a [routerLink]="'pictures'" (click)="sidenav.toggle()">Pictures</a></li>
       <li><a [routerLink]="'add'" (click)="sidenav.toggle()" *ngIf="authService.authenticated">Add a Recipe</a></li>
     </ul>
   </mat-sidenav>
