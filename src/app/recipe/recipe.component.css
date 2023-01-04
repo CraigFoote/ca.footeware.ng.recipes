@@ -20,3 +20,15 @@ a {
     text-decoration: none;
     outline: none;
 }
+
+.imgpanel {
+    background-color: rgb(255, 255, 255, 0.8);
+    background-blend-mode: color-dodge;
+    background-size: cover;
+    background-image: url(../../assets/images/DSCN0583.webp);
+    position: absolute;
+    top: 150px;
+    height: 406px;
+    width: 100%;
+    z-index: -1;
+}
