@@ -24,11 +24,11 @@ a {
 .imgpanel {
     background-color: rgb(255, 255, 255, 0.8);
     background-blend-mode: color-dodge;
-    background-size: cover;
-    background-image: url(../../assets/images/DSCN0583.webp);
+    background-image: url(../../assets/images/DSCN0583-a.webp);
+    opacity: 0.5;
     position: absolute;
     top: 150px;
-    height: 406px;
+    height: 303px;
     width: 100%;
     z-index: -1;
 }
