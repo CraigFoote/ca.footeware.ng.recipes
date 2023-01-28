@@ -35,6 +35,8 @@ export class SearchComponent implements OnInit, OnDestroy {
       } else if (this.term == undefined && tag != undefined) {
         this.tag = tag;
         this.searchTags(this.tag);
+      } else {
+        throw new Error("Expected a search term or a tag, received: " + params);
       }
     });
     // wait for all tags

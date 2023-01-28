@@ -30,7 +30,7 @@
         }}'.</span>
       <ul *ngIf="!loading">
         <li *ngFor="let recipe of recipes" style="padding: 20px;" role="listitem">
-          <a [routerLink]="'/recipe/' + recipe.id">{{ recipe.name }}</a>
+          <a [routerLink]="'/recipes/' + recipe.id">{{ recipe.name }}</a>
         </li>
       </ul>
     </div>

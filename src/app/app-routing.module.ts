@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'browse', component: BrowseComponent },
   { path: 'search', component: SearchComponent },
   { path: 'search/tag/:tag', component: SearchComponent },
-  { path: 'recipe/:id', component: RecipeComponent },
+  { path: 'recipes/:id', component: RecipeComponent },
   { path: 'add', component: EditComponent },
   { path: 'edit/:id', component: EditComponent },
   { path: 'login', component: AuthComponent },

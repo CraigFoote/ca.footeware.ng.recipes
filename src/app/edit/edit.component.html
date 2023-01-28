@@ -1,13 +1,13 @@
 <div class="container center">
-    <h1 *ngIf="!recipe" class="purple decker">Add a Recipe</h1>
-    <h1 *ngIf=" recipe" class="purple decker">Edit '{{ name }}'</h1>
+    <h1 *ngIf="!recipe || !name" class="purple decker">Add a Recipe</h1>
+    <h1 *ngIf="recipe && name" class="purple decker">Edit '{{ name }}'</h1>
 
     <img *ngIf="loading" src="assets/images/loading.gif" />
 
     <div class="left">
         <form #uploadPicsForm=ngForm>
             <input (change)="this.onFilechange($event)" class="form-control" type="file" id="formFile"
-                multiple="multiple" accept="image/png, image/jpeg, image/jpg, image/bmp">
+                multiple="multiple" accept="image/png, image/jpeg, image/jpg, image/bmp, image/webp">
             <button (click)="this.upload()" type="button" class="btn btn-primary mt-3">Upload Pictures</button>&nbsp;
             <button (click)="this.clearImages()" type="button" class="btn btn-warning mt-3">Clear Images</button>
         </form><br />
@@ -46,8 +46,8 @@
                     </mat-option>
                 </mat-autocomplete>
             </mat-form-field>
-            <input *ngIf="!recipe" type="submit" class="btn btn-primary mt-3" (click)="create()" value="Create" />&nbsp;
-            <input *ngIf="recipe" type="submit" class="btn btn-primary mt-3" (click)="update()" value="Update" />&nbsp;
+            <input *ngIf="!recipe || !name" type="submit" class="btn btn-primary mt-3" (click)="create()" value="Create" />&nbsp;
+            <input *ngIf="recipe && name" type="submit" class="btn btn-primary mt-3" (click)="update()" value="Update" />&nbsp;
             <span style="font-size: 20px;">{{ result }}</span>
         </form>
     </div>
