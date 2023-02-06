@@ -1,48 +1,48 @@
 <div class="bg">
-  <div class="container left">
-    <h1 class="purple decker center">Search</h1>
+  <!-- <img src="../../assets/images/02-Mothers-Flowers-a.png" alt="flowers" /> -->
+</div>
+<div class="container left">
+  <h1 class="purple decker center">Search</h1>
 
-    <div class="center">
-      <img *ngIf="loading" src="assets/images/loading.gif" />
-    </div>
-
-    <form #searchForm=ngForm (ngSubmit)="search(searchTerm.value)">
-      <div class="row" style="white-space: nowrap; width: 100%; padding: 0;">
-        <div class="col-lg-11">
-          <mat-form-field appearance="fill" style="width: 100%;">
-            <mat-label>Search</mat-label>
-            <input #searchTerm matInput maxlength="25" required placeholder="e.g. nan">
-          </mat-form-field>
-        </div>
-        <div class="col" style="text-align: left; width: 70px">
-          <button mat-raised-button type="submit" color="primary" style="height: 50px; margin: 0 0 5px 0;"
-            class="animate__animated animate__bounceInDown">Search</button>
-        </div>
-      </div>
-    </form>
-
-    <div class="left">
-      <span *ngIf="!loading && term != undefined && term.length > 0" class="small">{{ length }} result(s) matching '{{
-        term
-        }}'.</span>
-      <span *ngIf="!loading && tag != undefined && tag.length > 0" class="small">{{ length }} results(s) with tag
-        matching '{{ tag
-        }}'.</span>
-      <ul *ngIf="!loading">
-        <li *ngFor="let recipe of recipes" style="padding: 20px;" role="listitem">
-          <a [routerLink]="'/recipes/' + recipe.id">{{ recipe.name }}</a>
-        </li>
-      </ul>
-    </div>
-    <mat-paginator *ngIf="!loading" #paginator (page)="handlePageEvent($event)" [length]="length" [pageSize]="pageSize"
-      [disabled]=false [showFirstLastButtons]=true [pageSizeOptions]=[] [hidePageSize]=true [pageIndex]="pageNumber"
-      aria-label="Select page">
-    </mat-paginator>
-
-    <mat-chip-set *ngIf="allTags.length > 0" aria-label="Tags">
-      <mat-chip *ngFor="let tag of allTags" style="background-color: #ffc107;">
-        <a [routerLink]="'/search/tag/' + tag">{{ tag }}</a>
-      </mat-chip>
-    </mat-chip-set>
+  <div class="center">
+    <img *ngIf="loading" src="assets/images/loading.gif" />
   </div>
+
+  <form #searchForm=ngForm (ngSubmit)="search(searchTerm.value)">
+    <div class="row" style="white-space: nowrap; width: 100%; padding: 0;">
+      <div class="col-lg-11">
+        <mat-form-field appearance="fill" style="width: 100%;">
+          <mat-label>Search</mat-label>
+          <input #searchTerm matInput maxlength="25" required placeholder="e.g. nan">
+        </mat-form-field>
+      </div>
+      <div class="col" style="text-align: left; width: 70px">
+        <button mat-raised-button type="submit" color="primary" style="height: 50px; margin: 0 0 5px 0;"
+          class="animate__animated animate__bounceInDown">Search</button>
+      </div>
+    </div>
+  </form>
+
+  <div class="left">
+    <span *ngIf="!loading && term != undefined && term.length > 0" class="small">{{ length }} result(s) matching '{{
+      term
+      }}'.</span>
+    <span *ngIf="!loading && tag != undefined && tag.length > 0" class="small">{{ length }} results(s) with tag '{{ tag
+      }}'.</span>
+    <ul *ngIf="!loading">
+      <li *ngFor="let recipe of recipes" style="padding: 20px;" role="listitem">
+        <a [routerLink]="'/recipes/' + recipe.id">{{ recipe.name }}</a>
+      </li>
+    </ul>
+  </div>
+  <mat-paginator *ngIf="!loading" #paginator (page)="handlePageEvent($event)" [length]="length" [pageSize]="pageSize"
+    [disabled]=false [showFirstLastButtons]=true [pageSizeOptions]=[] [hidePageSize]=true [pageIndex]="pageNumber"
+    aria-label="Select page">
+  </mat-paginator>
+
+  <mat-chip-set *ngIf="allTags.length > 0" aria-label="Tags">
+    <mat-chip *ngFor="let tag of allTags" style="background-color: #ffc107;">
+      <a [routerLink]="'/search/tag/' + tag">{{ tag }}</a>
+    </mat-chip>
+  </mat-chip-set>
 </div>

@@ -22,12 +22,12 @@ a {
 }
 
 .imgpanel {
-    background-color: rgb(255, 255, 255, 0.8);
-    background-blend-mode: color-dodge;
+    background-color: rgba(170, 190, 165, 0.75);
+    background-blend-mode: lighten;
     background-image: url(../../assets/images/DSCN0583-a.webp);
     opacity: 0.5;
     position: absolute;
-    top: 150px;
+    top: 125px;
     height: 303px;
     width: 100%;
     z-index: -1;
