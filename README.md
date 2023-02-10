@@ -1,4 +1,4 @@
-# ca.footeware.ng.recipes
+# ng.recipes
 
 1. ng build
 1. docker build -t ng.recipes .
