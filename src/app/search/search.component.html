@@ -35,8 +35,8 @@
     </ul>
   </div>
   <mat-paginator *ngIf="!loading" #paginator (page)="handlePageEvent($event)" [length]="length" [pageSize]="pageSize"
-    [disabled]=false [showFirstLastButtons]=true [pageSizeOptions]=[] [hidePageSize]=true [pageIndex]="pageNumber"
-    aria-label="Select page">
+    [disabled]=false [showFirstLastButtons]=false [pageSizeOptions]=[] [hidePageSize]=true [pageIndex]="pageNumber"
+    aria-label="Select page" style="font-size: 0.7em;">
   </mat-paginator>
 
   <mat-chip-set *ngIf="allTags.length > 0" aria-label="Tags">
