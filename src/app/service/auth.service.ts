@@ -5,8 +5,7 @@ import { Router } from "@angular/router";
     providedIn: "root",
 })
 export class AuthService {
-    private u: string = "craig";
-    private p: string = "chocolate";
+    private p: string = "bogie";
     authenticated: boolean = false;
 
     constructor(private router: Router) { }
@@ -15,8 +14,8 @@ export class AuthService {
         this.router.navigate(['/login/']);
     }
 
-    authenticate(u: string, p: string) {
-        if (u == this.u && p == this.p) {
+    authenticate(p: string) {
+        if (p == this.p) {
             this.authenticated = true;
             return "Success!";
         } else {

@@ -8,15 +8,14 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent {
-  u: string = "";
   p: string = "";
   message!: string;
+  hide: boolean = true;
 
   constructor(private authService: AuthService) { }
 
   authenticate(form: NgForm) {
-    this.u = form.value.nameInput;
     this.p = form.value.passwordInput;
-    this.message = this.authService.authenticate(this.u, this.p);
+    this.message = this.authService.authenticate(this.p);
   }
 }
