@@ -21,19 +21,3 @@ mat-paginator {
     font-size: 13px;
     background-color: #FFC107;
 }
-
-.bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    top: 100px;
-    height: 733px;
-    width: 100%;
-    background-image: url(../../assets/images/02-Mothers-Flowers-b.webp);
-    background-blend-mode: lighten;
-    background-color: rgba(170, 190, 165, 0.75);
-    background-size: cover;
-    background-repeat: no-repeat;
-    opacity: 0.5;
-    z-index: -1;
-}
