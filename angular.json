@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ca.footeware.ng.recipes:build:production"
+              "buildTarget": "ca.footeware.ng.recipes:build:production"
             },
             "development": {
-              "browserTarget": "ca.footeware.ng.recipes:build:development"
+              "buildTarget": "ca.footeware.ng.recipes:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ca.footeware.ng.recipes:build"
+            "buildTarget": "ca.footeware.ng.recipes:build"
           }
         },
         "test": {

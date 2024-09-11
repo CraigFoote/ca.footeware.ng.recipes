@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './service/auth.service';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,7 @@ import { AuthService } from './service/auth.service';
 })
 export class AppComponent {
   authService!: AuthService;
+  currentApplicationVersion = environment.appVersion;
 
   constructor(authService: AuthService) {
     this.authService = authService;

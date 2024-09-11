@@ -1,0 +1,10 @@
+{
+    "MD033": {
+        "allowed_elements": [
+            "style"
+        ]
+    },
+    "MD013": {
+        "line_length": 200
+    }
+}

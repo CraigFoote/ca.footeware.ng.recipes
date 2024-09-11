@@ -41,6 +41,13 @@ mat-sidenav {
     background-color: #444444 !important;
 }
 
+mat-sidenav div {
+    margin-top: 15px;
+    color: aliceblue;
+    text-align: center;
+    font-size: 12px;
+}
+
 mat-sidenav-content {
     background-image: url(../assets/images/background_2804.webp);
 }

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class RecipeService {
     constructor(private http: HttpClient) { }
 
-    private host: string = 'http://footeware.ca:9000/recipes'
+    private host: string = 'http://localhost:9000/recipes'
 
     getAllTags(): Observable<any> {
         const headers = { 'Authorization': 'Basic Y3JhaWc6Y2hvY29sYXRl', 'Access-Control-Allow-Origin': '*' };
