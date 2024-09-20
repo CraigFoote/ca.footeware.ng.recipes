@@ -1,7 +1,7 @@
 {
   "name": "ca.footeware.ng.recipes",
   "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.2.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index.js",
   "dependencies": {
     "@angular/animations": "^18.2.5",
