@@ -3,7 +3,8 @@
 <style>
     code {
         background-color: transparent;
-        color: #ff9154
+        color: #ff9154;
+        font-size: 125%;
     }
 </style>
 
