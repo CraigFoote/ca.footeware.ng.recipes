@@ -24,7 +24,7 @@
     <span *ngIf="!loading && term != undefined && term.length > 0" class="small">{{ length }} result(s) matching '{{
       term
       }}'.</span>
-    <span *ngIf="!loading && tag != undefined && tag.length > 0" class="small">{{ length }} results(s) with tag '{{ tag
+    <span *ngIf="!loading && tag != undefined && tag.length > 0" class="small">{{ length }} result(s) with tag '{{ tag
       }}'.</span>
     <ul *ngIf="!loading">
       <li *ngFor="let recipe of recipes" style="padding: 20px;" role="listitem">
