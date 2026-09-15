@@ -1,16 +1,9 @@
 # ng.recipes
 
-<style>
-    code {
-        background-color: transparent;
-        color: #ff9154;
-        font-size: 125%;
-    }
-</style>
-
 ## Preparation
 
-1. ng update
+1. `npm install`
+1. `ng update`
 1. `docker network create recipes-network`
 1. `sudo mkdir -p /opt/mongodb/data`
 1. `sudo chmod 777 /opt/mongodb/data`

@@ -1,4 +1,4 @@
-FROM nginx:latest
+FROM nginx:1.31.5
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY /dist/ca.footeware.ng.recipes /usr/share/nginx/html
 RUN mkdir -p /etc/letsencrypt/live/footeware.ca
