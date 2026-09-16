@@ -25,6 +25,7 @@ Recipes service is called using `https://footeware.ca:9000/recipes` so as long a
 1. `ng build`
 1. `ng serve`
 1. <http://localhost:4200/>
+1. docker build -t ng.recipes .
 
 ## Deployment
 
