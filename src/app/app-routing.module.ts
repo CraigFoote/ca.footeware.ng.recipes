@@ -8,18 +8,19 @@ import { EditComponent } from './edit/edit.component';
 import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'browse', component: BrowseComponent },
-  { path: 'search', component: SearchComponent },
-  { path: 'search/tag/:tag', component: SearchComponent },
-  { path: 'recipes/:id', component: RecipeComponent },
-  { path: 'add', component: EditComponent },
-  { path: 'edit/:id', component: EditComponent },
-  { path: 'login', component: AuthComponent },
+    { path: '', component: HomeComponent },
+    { path: 'browse', component: BrowseComponent },
+    { path: 'search', component: SearchComponent },
+    { path: 'search/tag/:tag', component: SearchComponent },
+    { path: 'search/term/:term', component: SearchComponent },
+    { path: 'recipes/:id', component: RecipeComponent },
+    { path: 'add', component: EditComponent },
+    { path: 'edit/:id', component: EditComponent },
+    { path: 'login', component: AuthComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

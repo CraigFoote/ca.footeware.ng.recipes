@@ -1,7 +1,7 @@
 <div class="container center">
     <h1 class="purple decker">Log In</h1>
     <div class="center">
-        <form #editForm=ngForm (submit)="authenticate(this.editForm)">
+        <form #editForm="ngForm" (ngSubmit)="authenticate(editForm)">
             <mat-form-field appearance="outline" style="width: 50%;">
                 <mat-label>Password</mat-label>
                 <input name="passwordInput" [type]="hide ? 'password' : 'text'" [(ngModel)]="p" matInput

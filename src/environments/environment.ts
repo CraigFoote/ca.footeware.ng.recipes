@@ -1,3 +1,5 @@
+import packageJson from '../../package.json';
+
 export const environment = {
-    appVersion: require('../../package.json').version
+    appVersion: packageJson.version
 };

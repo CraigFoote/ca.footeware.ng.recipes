@@ -4,6 +4,13 @@
 
 1. `npm install`
 1. `ng update`
+   
+### Using Deployed Service
+
+Recipes service is called using `https://footeware.ca:9000/recipes` so as long as that works, the UI can access it.
+
+### Local Service and MongoDB
+
 1. `docker network create recipes-network`
 1. `sudo mkdir -p /opt/mongodb/data`
 1. `sudo chmod 777 /opt/mongodb/data`
@@ -17,10 +24,7 @@
 1. change app version number in `package.json`
 1. `ng build`
 1. `ng serve`
-1. <http://localhost:4200>
-1. `docker build -t ng.recipes .`
-1. `docker run -d --name ng.recipes -p 9001:9001 --network recipes-network -t ng.recipes`
-1. <http://localhost:9001>
+1. <http://localhost:4200/>
 
 ## Deployment
 

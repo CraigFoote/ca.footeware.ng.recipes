@@ -19,11 +19,9 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowseComponent } from './browse/browse.component';
@@ -35,43 +33,41 @@ import { AuthComponent } from './auth/auth.component';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    BrowseComponent,
-    SearchComponent,
-    RecipeComponent,
-    EditComponent,
-    AuthComponent,
-  ],
-  imports: [
-    CommonModule,
-    TextFieldModule,
-    FormsModule,
-    MatAutocompleteModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    MatDatepickerModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatInputModule,
-    MatRadioModule,
-    MatSidenavModule,
-    MatSelectModule,
-    MatSlideToggleModule,
-    MatSliderModule,
-    MatToolbarModule,
-    MatPaginatorModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    NgbModule,
-    PlatformModule,
-    ReactiveFormsModule,
-    RouterModule,
-    HttpClientModule
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        BrowseComponent,
+        SearchComponent,
+        RecipeComponent,
+        EditComponent,
+        AuthComponent,
+    ],
+    imports: [
+        CommonModule,
+        TextFieldModule,
+        FormsModule,
+        MatAutocompleteModule,
+        MatButtonModule,
+        MatCheckboxModule,
+        MatChipsModule,
+        MatDatepickerModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
+        MatRadioModule,
+        MatSidenavModule,
+        MatSelectModule,
+        MatSlideToggleModule,
+        MatSliderModule,
+        MatToolbarModule,
+        MatPaginatorModule,
+        BrowserModule,
+        AppRoutingModule,
+        PlatformModule,
+        ReactiveFormsModule,
+        RouterModule
+    ],
+    bootstrap: [AppComponent],
+    providers: [provideHttpClient(withInterceptorsFromDi())]
 })
-export class AppModule { }
+export class AppModule {}

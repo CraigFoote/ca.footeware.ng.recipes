@@ -1,25 +1,26 @@
 <mat-sidenav-container>
 
-  <mat-sidenav #sidenav mode="push">
-    <ul class="nav-link-container">
-      <li><a [routerLink]="''" (click)="sidenav.toggle()">Home</a></li>
-      <li><a [routerLink]="'search'" (click)="sidenav.toggle()">Search</a></li>
-      <li><a [routerLink]="'browse'" (click)="sidenav.toggle()">Browse</a></li>
-      <li><a [routerLink]="'add'" (click)="sidenav.toggle()" *ngIf="authService.authenticated">Add a Recipe</a></li>
-    </ul>
-    <div>v{{currentApplicationVersion}}</div>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary" class="mat-elevation-z5 fixed-top">
-      <div class="center full-width">
-        <button mat-icon-button aria-label="menu icon" (click)="sidenav.toggle()">
-          <mat-icon class="animate__animated animate__bounceInLeft">menu</mat-icon>
-        </button>
-        <span class="script">Annie Foote's Recipes</span>
-      </div>
-    </mat-toolbar>
+    <mat-sidenav #sidenav mode="push">
+        <ul class="nav-link-container">
+            <li><a [routerLink]="''" (click)="sidenav.toggle()">Home</a></li>
+            <li><a [routerLink]="'search'" (click)="sidenav.toggle()">Search</a></li>
+            <li><a [routerLink]="'browse'" (click)="sidenav.toggle()">Browse</a></li>
+            <li><a [routerLink]="'add'" (click)="sidenav.toggle()" *ngIf="authService.authenticated">Add a Recipe</a>
+            </li>
+        </ul>
+        <div>v{{currentApplicationVersion}}</div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary" class="mat-elevation-z5 fixed-top">
+            <div class="center full-width">
+                <button mat-icon-button aria-label="menu icon" (click)="sidenav.toggle()">
+                    <mat-icon class="animate__animated animate__bounceInLeft">menu</mat-icon>
+                </button>
+                <span class="script">Annie Foote's Recipes</span>
+            </div>
+        </mat-toolbar>
 
-    <router-outlet></router-outlet>
+        <router-outlet></router-outlet>
 
-  </mat-sidenav-content>
+    </mat-sidenav-content>
 </mat-sidenav-container>

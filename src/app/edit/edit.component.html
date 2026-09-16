@@ -1,8 +1,14 @@
 <div class="container center">
-    <h1 *ngIf="!recipe || !name" class="purple decker">Add a Recipe</h1>
-    <h1 *ngIf="recipe && name" class="purple decker">Edit '{{ name }}'</h1>
+    @if (!recipe || !name) {
+    <h1 class="purple decker">Add a Recipe</h1>
+    }
+    @if (recipe && name) {
+    <h1 class="purple decker">Edit '{{ name }}'</h1>
+    }
 
-    <img *ngIf="loading" src="assets/images/loading.gif" />
+    @if (loading) {
+    <img src="assets/images/loading.gif" />
+    }
 
     <div class="left">
         <form #uploadPicsForm=ngForm>
@@ -27,7 +33,8 @@
                     style="width: 100%; background-color: transparent; padding: 0; border: 0;"></textarea>
             </mat-form-field>
 
-            <mat-form-field *ngIf="!loading" appearance="fill" style="width: 100%;" req>
+            @if (!loading) {
+            <mat-form-field appearance="fill" style="width: 100%;" req>
                 <mat-label>Tags</mat-label>
                 <mat-chip-grid #chipGrid aria-label="Tags" required="required">
                     <mat-chip-row *ngFor="let tag of tags" (removed)="remove(tag)" style="background-color: #FFC107">
@@ -46,8 +53,13 @@
                     </mat-option>
                 </mat-autocomplete>
             </mat-form-field>
-            <input *ngIf="!recipe || !name" type="submit" class="btn btn-primary mt-3" (click)="create()" value="Create" />&nbsp;
-            <input *ngIf="recipe && name" type="submit" class="btn btn-primary mt-3" (click)="update()" value="Update" />&nbsp;
+            }
+            @if (!recipe || !name) {
+            <input type="submit" class="btn btn-primary mt-3" (click)="create()" value="Create" />&nbsp;
+            }
+            @if (recipe && name) {
+            <input type="submit" class="btn btn-primary mt-3" (click)="update()" value="Update" />&nbsp;
+            }
             <span style="font-size: 20px;">{{ result }}</span>
         </form>
     </div>

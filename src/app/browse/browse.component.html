@@ -1,18 +1,24 @@
 <div class="bg">
     <div class="container center">
         <h1 class="purple decker">Browse</h1>
-        <img *ngIf="loading" src="assets/images/loading.gif" />
+        @if (loading) {
+        <img src="assets/images/loading.gif" />
+        }
         <div class="left">
-            <ul *ngIf="!loading">
+            @if (!loading) {
+            <ul>
                 <li *ngFor="let recipe of recipes" style="padding-top: 30px;" role="listitem"
                     class="animate__animated animate__fadeIn">
                     <a [routerLink]="'/recipes/' + recipe.id">{{recipe.name}}</a>
                 </li>
             </ul>
+            }
         </div>
-        <mat-paginator *ngIf="!loading" #paginator (page)="handlePageEvent($event)" [length]="length"
-            [pageSize]="pageSize" [disabled]=false [showFirstLastButtons]=false [pageSizeOptions]=[] [hidePageSize]=true
+        @if (!loading) {
+        <mat-paginator #paginator (page)="handlePageEvent($event)" [length]="length" [pageSize]="pageSize"
+            [disabled]=false [showFirstLastButtons]=false [pageSizeOptions]=[] [hidePageSize]=true
             [pageIndex]="pageIndex" aria-label="Select page" style="font-size: 0.7em;">
         </mat-paginator>
+        }
     </div>
 </div>

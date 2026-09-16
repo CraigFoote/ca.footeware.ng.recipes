@@ -3,6 +3,7 @@ import { AuthService } from '../service/auth.service';
 
 @Component({
     selector: 'home-root',
+    standalone: false,
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css']
 })

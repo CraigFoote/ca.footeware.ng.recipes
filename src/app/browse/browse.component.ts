@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { Recipe } from "../model/recipe";
 import { RecipeService } from "../service/recipe.service";
 import { PageEvent } from '@angular/material/paginator';
@@ -6,6 +6,7 @@ import { PagingDTO } from "../model/pagingDTO";
 
 @Component({
     selector: "browse-root",
+    standalone: false,
     templateUrl: './browse.component.html',
     styleUrls: ['./browse.component.css']
 })
@@ -16,7 +17,9 @@ export class BrowseComponent implements OnInit {
     recipes!: Recipe[];
     loading: boolean = false;
 
-    constructor(private recipeService: RecipeService) { }
+    constructor(private recipeService: RecipeService,
+        private changeDetectorRef: ChangeDetectorRef,
+    ) {}
 
     ngOnInit(): void {
         this.getRecipes();
@@ -35,9 +38,10 @@ export class BrowseComponent implements OnInit {
                 const dto: PagingDTO = data;
                 this.length = dto.total;
                 const unsorted = dto.recipes;
-                const sorted = unsorted.sort((a,b) => a.name.localeCompare(b.name));
+                const sorted = unsorted.sort((a, b) => a.name.localeCompare(b.name));
                 this.recipes = sorted;
                 this.loading = false;
+                this.changeDetectorRef.detectChanges();
             },
             error: error => {
                 console.error('There was an error!', error.message);
