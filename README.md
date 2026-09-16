@@ -25,11 +25,11 @@ Recipes service is called using `https://footeware.ca:9000/recipes` so as long a
 1. `ng build`
 1. `ng serve`
 1. <http://localhost:4200/>
-1. docker build -t ng.recipes .
 
 ## Deployment
 
 1. commit changes to git and create tag [version]
+1. 1. docker build -t ng.recipes .
 1. `docker tag ng.recipes craigfoote/ng.recipes:[version]`
 1. `docker tag ng.recipes craigfoote/ng.recipes:latest`
 1. `docker push craigfoote/ng.recipes:[version]`
