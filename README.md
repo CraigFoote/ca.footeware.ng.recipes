@@ -4,7 +4,7 @@
 
 1. `npm install`
 1. `ng update`
-   
+
 ### Using Deployed Service
 
 Recipes service is called using `https://footeware.ca:9000/recipes` so as long as that works, the UI can access it.
